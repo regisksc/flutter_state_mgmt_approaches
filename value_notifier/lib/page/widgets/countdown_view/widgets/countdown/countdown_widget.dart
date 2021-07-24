@@ -50,7 +50,7 @@ class _CountdownWidgetState extends State<CountdownWidget> with TickerProviderSt
             animation: blinking,
             builder: (context, _) {
               return AnimatedOpacity(
-                opacity: countdownController.isPaused.value ? blinking.value : 1,
+                opacity: countdownController.timerState.value == TimerState.paused ? blinking.value : 1,
                 duration: Duration(milliseconds: 250),
                 child: Text(
                   widget.amountOfSeconds.toString(),

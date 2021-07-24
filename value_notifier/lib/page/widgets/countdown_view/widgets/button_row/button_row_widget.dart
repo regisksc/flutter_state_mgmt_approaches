@@ -19,13 +19,14 @@ class ButtonRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Button(
-            icon: Icons.play_arrow,
-            onTap: () => controller.start(),
-          ),
-          Button(
-            icon: Icons.pause,
-            onTap: () => controller.pause(),
+          AnimatedBuilder(
+            animation: controller.timerState,
+            builder: (_, __) => Visibility(
+              child: Button(
+                icon: controller.showPlayButton ? Icons.play_arrow : Icons.pause,
+                onTap: () => controller.showPlayButton ? controller.start() : controller.pause(),
+              ),
+            ),
           ),
           Button(
             icon: Icons.restart_alt_sharp,

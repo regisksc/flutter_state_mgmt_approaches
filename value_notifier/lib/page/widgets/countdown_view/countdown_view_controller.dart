@@ -3,36 +3,36 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:value_notifier/shared/constants/constants.dart';
 
+enum TimerState { initial, paused, running }
+
 class CountdownViewController {
-  int _timerAmountInSeconds = Constants.defaultTimerAmountOfSeconds;
+  static int _timerAmountInSeconds = Constants.defaultTimerAmountOfSeconds;
   void setTimer(int seconds) => _timerAmountInSeconds = seconds;
-  final isPaused = ValueNotifier(true);
+  final timerState = ValueNotifier(TimerState.initial);
   late Timer timer;
-  final timeToDisplay = ValueNotifier(Constants.defaultTimerAmountOfSeconds);
+  final timeToDisplay = ValueNotifier(_timerAmountInSeconds);
 
   void start() {
-    isPaused.value = false;
+    timerState.value = TimerState.running;
     timer = Timer.periodic(
       Duration(seconds: 1),
       (_) {
-        if (timeToDisplay.value != 0) {
-          timeToDisplay.value--;
-        } else {
-          timer.cancel();
-        }
+        timeToDisplay.value != 0 ? timeToDisplay.value-- : timer.cancel();
         timeToDisplay.notifyListeners();
       },
     );
   }
 
   void pause() {
-    isPaused.value = true;
+    timerState.value = TimerState.paused;
     timer.cancel();
   }
 
   void restart() {
     timer.cancel();
-    isPaused.value = false;
+    timerState.value = TimerState.initial;
     timeToDisplay.value = Constants.defaultTimerAmountOfSeconds;
   }
+
+  bool get showPlayButton => timerState.value == TimerState.paused || timerState.value == TimerState.initial;
 }
