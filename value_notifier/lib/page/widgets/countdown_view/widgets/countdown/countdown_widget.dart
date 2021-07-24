@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+import 'package:get_it/get_it.dart';
+
+import '../../countdown_view_controller.dart';
 
 class CountdownWidget extends StatefulWidget {
   const CountdownWidget({
@@ -18,6 +20,8 @@ class CountdownWidget extends StatefulWidget {
 class _CountdownWidgetState extends State<CountdownWidget> with TickerProviderStateMixin {
   late AnimationController blinkingController;
   late Animation blinking;
+  final countdownController = GetIt.instance.get<CountdownViewController>();
+
   @override
   void initState() {
     blinkingController = AnimationController(vsync: this, duration: Duration(milliseconds: 250));
@@ -44,9 +48,9 @@ class _CountdownWidgetState extends State<CountdownWidget> with TickerProviderSt
       child: Center(
         child: AnimatedBuilder(
             animation: blinking,
-            builder: (context, snapshot) {
+            builder: (context, _) {
               return AnimatedOpacity(
-                opacity: widget.isPaused ? blinking.value : 1,
+                opacity: countdownController.isPaused.value ? blinking.value : 1,
                 duration: Duration(milliseconds: 250),
                 child: Text(
                   widget.amountOfSeconds.toString(),

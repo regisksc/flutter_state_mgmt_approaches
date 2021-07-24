@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
           child: child,
         );
       },
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.pink,
         accentColor: AppColors.primaryColor,

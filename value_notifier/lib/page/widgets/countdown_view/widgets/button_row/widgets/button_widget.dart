@@ -7,21 +7,19 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap ?? () {},
-      child: Container(
-        width: 100,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Theme.of(context).accentColor,
-        ),
-        child: SizedBox.expand(
-          child: Icon(
-            icon,
-            size: 100,
-            color: Theme.of(context).primaryColor,
-          ),
-        ),
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Theme.of(context).accentColor,
+        shape: CircleBorder(),
+        padding: EdgeInsets.zero,
+        shadowColor: Theme.of(context).primaryColor,
+        animationDuration: Duration.zero,
+      ),
+      onPressed: onTap ?? () {},
+      child: Icon(
+        icon,
+        size: 100,
+        color: Theme.of(context).primaryColor,
       ),
     );
   }
