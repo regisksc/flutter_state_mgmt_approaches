@@ -17,12 +17,7 @@ class TimerCountdownView extends StatelessWidget {
     return Column(
       children: [
         Spacer(),
-        ValueListenableBuilder<int>(
-          valueListenable: controller.timeToDisplay,
-          builder: (_, timer, __) {
-            return CountdownWidget(amountOfSeconds: timer, isPaused: false);
-          },
-        ),
+        CountdownWidget(),
         SizedBox(height: 50),
         ButtonRow(controller: controller),
         Spacer(),

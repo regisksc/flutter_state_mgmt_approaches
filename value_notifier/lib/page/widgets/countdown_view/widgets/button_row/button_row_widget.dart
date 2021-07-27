@@ -26,18 +26,18 @@ class ButtonRow extends StatelessWidget {
     );
   }
 
-  Button _restartButton() => Button(
-        icon: Icons.restart_alt_sharp,
-        onTap: () => controller.restart(),
+  Widget _restartButton() => Align(
+        child: Button(
+          icon: Icons.restart_alt_sharp,
+          onTap: () => controller.restart(),
+        ),
       );
 
   AnimatedBuilder _playOrPauseButton() => AnimatedBuilder(
         animation: controller.timerState,
-        builder: (_, __) => Visibility(
-          child: Button(
-            icon: controller.showPlayButton ? Icons.play_arrow : Icons.pause,
-            onTap: () => controller.showPlayButton ? controller.start() : controller.pause(),
-          ),
+        builder: (_, __) => Button(
+          icon: controller.showPlayButton ? Icons.play_arrow : Icons.pause,
+          onTap: () => controller.showPlayButton ? controller.start() : controller.pause(),
         ),
       );
 }

@@ -6,30 +6,28 @@ import 'package:value_notifier/shared/constants/constants.dart';
 enum TimerState { initial, paused, running }
 
 class CountdownViewController {
-  static int _timerAmountInSeconds = Constants.defaultTimerAmountOfSeconds;
+  int _timerAmountInSeconds = Constants.defaultTimerAmountOfSeconds;
   void setTimer(int seconds) => _timerAmountInSeconds = seconds;
   final timerState = ValueNotifier(TimerState.initial);
-  late Timer timer;
-  final timeToDisplay = ValueNotifier(_timerAmountInSeconds);
+  late Timer _timer;
+  late ValueNotifier<int> timeToDisplay = ValueNotifier(_timerAmountInSeconds);
+  bool get canPlayOrPause => timeToDisplay.value != 0;
 
   void start() {
     timerState.value = TimerState.running;
-    timer = Timer.periodic(
+    _timer = Timer.periodic(
       Duration(seconds: 1),
-      (_) {
-        timeToDisplay.value != 0 ? timeToDisplay.value-- : timer.cancel();
-        timeToDisplay.notifyListeners();
-      },
+      (_) => timeToDisplay.value != 0 ? timeToDisplay.value-- : _timer.cancel(),
     );
   }
 
   void pause() {
     timerState.value = TimerState.paused;
-    timer.cancel();
+    _timer.cancel();
   }
 
   void restart() {
-    timer.cancel();
+    _timer.cancel();
     timerState.value = TimerState.initial;
     timeToDisplay.value = Constants.defaultTimerAmountOfSeconds;
   }

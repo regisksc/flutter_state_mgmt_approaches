@@ -4,15 +4,6 @@ import 'package:get_it/get_it.dart';
 import '../../countdown_view_controller.dart';
 
 class CountdownWidget extends StatefulWidget {
-  const CountdownWidget({
-    Key? key,
-    required this.amountOfSeconds,
-    required this.isPaused,
-  }) : super(key: key);
-
-  final int amountOfSeconds;
-  final bool isPaused;
-
   @override
   _CountdownWidgetState createState() => _CountdownWidgetState();
 }
@@ -53,7 +44,7 @@ class _CountdownWidgetState extends State<CountdownWidget> with TickerProviderSt
                 opacity: countdownController.timerState.value == TimerState.paused ? blinking.value : 1,
                 duration: Duration(milliseconds: 250),
                 child: Text(
-                  widget.amountOfSeconds.toString(),
+                  countdownController.timeToDisplay.value.toString(),
                   style: TextStyle(
                     color: Theme.of(context).primaryColor,
                     fontSize: 100,

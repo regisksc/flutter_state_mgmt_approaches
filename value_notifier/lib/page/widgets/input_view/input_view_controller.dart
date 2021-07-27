@@ -17,7 +17,7 @@ class TimerInputViewController {
 
   void onSend() {
     showTimerInputStep.value = false;
-    Future.delayed(Constants.fadeTransitionDuration, () => countdownController.setTimer(_timer));
-    timerController.timerStep.value = CountdownViewStep();
+    countdownController.setTimer(_timer);
+    Future.delayed(Constants.fadeTransitionDuration, () => timerController.timerStep.value = CountdownViewStep());
   }
 }

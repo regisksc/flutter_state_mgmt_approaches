@@ -28,6 +28,7 @@ class Field extends StatelessWidget {
       ),
       textAlign: TextAlign.center,
       inputFormatters: formatters,
+      onChanged: onChanged,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         enabledBorder: OutlineInputBorder(
