@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../shared/constants/constants.dart';
+import '../../../constants/constants.dart';
 import '../../notifiers/timer_step_notifier.dart';
 import '../../timer_controller.dart';
 import '../countdown_view/countdown_view_controller.dart';

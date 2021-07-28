@@ -1,5 +1,5 @@
 import '/page/timer_controller.dart';
-import '../../../../../shared/constants/constants.dart';
+import '../../../../../constants/constants.dart';
 import '../../../../notifiers/timer_step_notifier.dart';
 import '../../../input_view/input_view_controller.dart';
 import '../../countdown_view_controller.dart';

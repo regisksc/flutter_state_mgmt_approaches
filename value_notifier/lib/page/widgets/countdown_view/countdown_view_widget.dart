@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:value_notifier/shared/constants/constants.dart';
+import 'package:value_notifier/constants/constants.dart';
 
 import 'countdown_view_controller.dart';
 import 'widgets/back_button/back_button_widget.dart';

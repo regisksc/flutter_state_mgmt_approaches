@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../shared/constants/constants.dart';
-import '../../../shared/widgets/field_widget.dart';
+import '../../../constants/constants.dart';
 import '../countdown_view/countdown_view_controller.dart';
 import 'input_view_controller.dart';
+import 'widgets/field_widget.dart';
 
 class TimerInputView extends StatelessWidget {
   TimerInputView({

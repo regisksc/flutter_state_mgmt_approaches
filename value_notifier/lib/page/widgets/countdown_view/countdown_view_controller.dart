@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
-import '../../../shared/constants/constants.dart';
+import '../../../constants/constants.dart';
 
 enum TimerState { initial, paused, running, over }
 
