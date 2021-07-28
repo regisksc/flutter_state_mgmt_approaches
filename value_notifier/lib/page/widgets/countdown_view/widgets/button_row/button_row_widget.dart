@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:value_notifier/page/widgets/countdown_view/countdown_view_controller.dart';
 
+import '../../countdown_view_controller.dart';
 import 'widgets/button_widget.dart';
 
 class ButtonRow extends StatelessWidget {

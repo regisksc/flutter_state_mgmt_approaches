@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:value_notifier/page/widgets/countdown_view/countdown_view_controller.dart';
 import 'package:value_notifier/page/widgets/input_view/input_view_widget.dart';
 
-import 'logic/notifiers/timer_step_notifier.dart';
+import 'notifiers/timer_step_notifier.dart';
 import 'timer_controller.dart';
 import 'widgets/countdown_view/countdown_view_widget.dart';
 

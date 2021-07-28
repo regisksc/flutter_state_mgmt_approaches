@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:value_notifier/page/logic/notifiers/timer_step_notifier.dart';
-import 'package:value_notifier/shared/constants/constants.dart';
 
+import '../../../shared/constants/constants.dart';
+import '../../notifiers/timer_step_notifier.dart';
 import '../../timer_controller.dart';
 import '../countdown_view/countdown_view_controller.dart';
 

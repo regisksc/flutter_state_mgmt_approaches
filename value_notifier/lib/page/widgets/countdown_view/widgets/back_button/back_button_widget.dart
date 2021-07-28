@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:value_notifier/page/widgets/countdown_view/countdown_view_controller.dart';
-import 'package:value_notifier/page/widgets/countdown_view/widgets/back_button/back_button_controller.dart';
-import 'package:value_notifier/page/widgets/input_view/input_view_controller.dart';
 
 import '../../../../timer_controller.dart';
+import '../../../input_view/input_view_controller.dart';
+import '../../countdown_view_controller.dart';
+import 'back_button_controller.dart';
 
 class BackButtonWidget extends StatelessWidget {
   final controller = BackButtonController(

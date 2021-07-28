@@ -1,9 +1,8 @@
-import 'package:get_it/get_it.dart';
-import 'package:value_notifier/page/logic/notifiers/timer_step_notifier.dart';
-import 'package:value_notifier/page/timer_controller.dart';
-import 'package:value_notifier/page/widgets/countdown_view/countdown_view_controller.dart';
-import 'package:value_notifier/page/widgets/input_view/input_view_controller.dart';
-import 'package:value_notifier/shared/constants/constants.dart';
+import '/page/timer_controller.dart';
+import '../../../../../shared/constants/constants.dart';
+import '../../../../notifiers/timer_step_notifier.dart';
+import '../../../input_view/input_view_controller.dart';
+import '../../countdown_view_controller.dart';
 
 class BackButtonController {
   final TimerController timerController;
