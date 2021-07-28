@@ -11,13 +11,31 @@ class TimerInputViewController {
 
   TimerInputViewController({required this.timerController, required this.countdownController});
 
-  final showTimerInputStep = ValueNotifier(true);
+  final showPageContent = ValueNotifier(true);
   int _timer = 5;
   void setTimer(int seconds) => _timer = seconds;
 
   void onSend() {
-    showTimerInputStep.value = false;
+    showPageContent.value = false;
+    _setTimer();
+    _enableTimerVisibility();
+    _changePageState();
+  }
+
+  void _changePageState() {
+    Future.delayed(Constants.fadeTransitionDuration, () {
+      timerController.timerStep.value = CountdownViewStep();
+    });
+  }
+
+  void _enableTimerVisibility() {
+    if (!countdownController.showPageContent.value) {
+      countdownController.showPageContent.value = true;
+    }
+  }
+
+  void _setTimer() {
     countdownController.setTimer(_timer);
-    Future.delayed(Constants.fadeTransitionDuration, () => timerController.timerStep.value = CountdownViewStep());
+    countdownController.timeToDisplay.value = _timer;
   }
 }

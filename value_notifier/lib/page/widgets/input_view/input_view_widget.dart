@@ -16,11 +16,11 @@ class TimerInputView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<bool>(
-        valueListenable: controller.showTimerInputStep,
-        builder: (_, show, __) {
+    return AnimatedBuilder(
+        animation: controller.showPageContent,
+        builder: (_, __) {
           return AnimatedOpacity(
-            opacity: show ? 1 : 0,
+            opacity: controller.showPageContent.value ? 1 : 0,
             duration: Constants.fadeTransitionDuration,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
