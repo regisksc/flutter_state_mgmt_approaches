@@ -26,12 +26,7 @@ class TimerInputView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 DescriptionLabel(),
-                Field(
-                  onChanged: (text) => controller.setTimer(
-                    int.tryParse(text) ?? Constants.defaultTimerAmountOfSeconds,
-                  ),
-                  maxLength: 5,
-                ),
+                Field(onChanged: onTypeTimer, maxLength: 4),
                 SizedBox(height: 100),
                 StartTimerButton(controller)
               ],
@@ -39,6 +34,10 @@ class TimerInputView extends StatelessWidget {
           );
         });
   }
+
+  onTypeTimer(text) => controller.setTimer(
+        int.tryParse(text) ?? Constants.defaultTimerAmountOfSeconds,
+      );
 }
 
 class StartTimerButton extends StatelessWidget {

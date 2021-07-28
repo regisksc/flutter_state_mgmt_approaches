@@ -22,18 +22,55 @@ class TimerCountdownView extends StatelessWidget {
         return AnimatedOpacity(
           opacity: controller.showPageContent.value ? 1 : 0,
           duration: Constants.fadeTransitionDuration,
-          child: Column(
-            children: [
-              BackButtonWidget(),
-              Spacer(),
-              CountdownWidget(),
-              SizedBox(height: 50),
-              ButtonRow(controller: controller),
-              Spacer(flex: 2),
-            ],
+          child: OrientationBuilder(
+            builder: (_, orientation) => orientation == Orientation.portrait
+                ? PortraitCountdownView(controller)
+                : LandscapeCountdownView(controller),
           ),
         );
       },
+    );
+  }
+}
+
+class PortraitCountdownView extends StatelessWidget {
+  const PortraitCountdownView(this.controller);
+  final CountdownViewController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        BackButtonWidget(),
+        Spacer(),
+        CountdownWidget(),
+        SizedBox(height: 50),
+        ButtonRow(controller: controller),
+        Spacer(flex: 2),
+      ],
+    );
+  }
+}
+
+class LandscapeCountdownView extends StatelessWidget {
+  const LandscapeCountdownView(this.controller);
+  final CountdownViewController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Column(
+          children: [
+            BackButtonWidget(),
+            const Spacer(),
+          ],
+        ),
+        Expanded(flex: 10, child: CountdownWidget()),
+        ButtonRow(controller: controller),
+        Spacer(),
+      ],
     );
   }
 }
