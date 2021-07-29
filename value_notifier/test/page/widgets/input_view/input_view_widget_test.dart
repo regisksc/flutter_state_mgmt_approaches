@@ -24,10 +24,15 @@ void main() {
     final animatedBuilder = tester.widget(animatedBuilderFinder) as AnimatedBuilder;
 
     // assert
-    expect(animatedBuilderFinder, findsOneWidget);
-    expect(descriptionLabelFinder, findsOneWidget);
-    expect(fieldFinder, findsOneWidget);
-    expect(startTimerButtonFinder, findsOneWidget);
-    expect(animatedBuilder.listenable, controller.showPageContent);
+    _expectPageFinds(animatedBuilderFinder, descriptionLabelFinder, fieldFinder, startTimerButtonFinder);
+    expect(animatedBuilder.listenable, equals(controller.showPageContent));
   });
+}
+
+void _expectPageFinds(
+    Finder animatedBuilderFinder, Finder descriptionLabelFinder, Finder fieldFinder, Finder startTimerButtonFinder) {
+  expect(animatedBuilderFinder, findsOneWidget);
+  expect(descriptionLabelFinder, findsOneWidget);
+  expect(fieldFinder, findsOneWidget);
+  expect(startTimerButtonFinder, findsOneWidget);
 }
