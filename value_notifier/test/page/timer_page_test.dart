@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:get_it/get_it.dart';
 import 'package:value_notifier/page/notifiers/timer_step_notifier.dart';
 import 'package:value_notifier/page/timer_controller.dart';
 import 'package:value_notifier/page/timer_page.dart';
 import 'package:value_notifier/page/widgets/countdown_view/countdown_view_widget.dart';
 import 'package:value_notifier/page/widgets/input_view/input_view_widget.dart';
+import 'package:value_notifier/shared/adapters/di_adapter.dart';
 
 import '../utils/test_setup.dart';
 
@@ -38,7 +38,7 @@ void main() {
       // Arrange
       await loadPage(tester, page: TimerPage());
       await tester.pump();
-      final controller = GetIt.I.get<TimerController>();
+      final controller = DiAdapter().get<TimerController>();
       final timerStepInitialState = controller.timerStep.value;
 
       // Act

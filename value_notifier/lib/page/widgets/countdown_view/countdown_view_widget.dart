@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
+import 'package:value_notifier/shared/adapters/di_adapter.dart';
 import 'package:value_notifier/shared/constants/constants.dart';
 
 import 'countdown_view_controller.dart';
@@ -12,7 +12,7 @@ class TimerCountdownView extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final controller = GetIt.instance.get<CountdownViewController>();
+  final controller = DiAdapter().get<CountdownViewController>();
 
   @override
   Widget build(BuildContext context) {

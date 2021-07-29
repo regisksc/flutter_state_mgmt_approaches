@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
+import 'package:value_notifier/shared/adapters/di_adapter.dart';
 
 import '../../../shared/constants/constants.dart';
 import '../countdown_view/countdown_view_controller.dart';
@@ -9,8 +9,8 @@ import 'widgets/field_widget.dart';
 class TimerInputView extends StatelessWidget {
   TimerInputView({Key? key}) : super(key: key);
 
-  final controller = GetIt.instance.get<TimerInputViewController>();
-  final countdownController = GetIt.instance.get<CountdownViewController>();
+  final controller = DiAdapter().get<TimerInputViewController>();
+  final countdownController = DiAdapter().get<CountdownViewController>();
 
   @override
   Widget build(BuildContext context) {

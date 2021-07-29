@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
+import 'package:value_notifier/shared/adapters/di_adapter.dart';
 
 import '../../../../timer_controller.dart';
 import '../../../input_view/input_view_controller.dart';
@@ -8,9 +8,9 @@ import 'back_button_controller.dart';
 
 class BackButtonWidget extends StatelessWidget {
   final controller = BackButtonController(
-    GetIt.instance.get<TimerController>(),
-    GetIt.instance.get<TimerInputViewController>(),
-    GetIt.instance.get<CountdownViewController>(),
+    DiAdapter().get<TimerController>(),
+    DiAdapter().get<TimerInputViewController>(),
+    DiAdapter().get<CountdownViewController>(),
   );
 
   @override

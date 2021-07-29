@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:get_it/get_it.dart';
+import 'package:value_notifier/shared/adapters/di_adapter.dart';
 import 'package:value_notifier/shared/constants/constants.dart';
 import 'package:value_notifier/page/notifiers/timer_step_notifier.dart';
 import 'package:value_notifier/page/widgets/input_view/input_view_controller.dart';
@@ -14,7 +14,7 @@ void main() {
     'should behave as expected when tapping start button',
     () async {
       // arrange
-      final controller = GetIt.I.get<TimerInputViewController>();
+      final controller = DiAdapter().get<TimerInputViewController>();
       // act
       controller.onSend();
       await Future.delayed(Constants.fadeTransitionDuration);

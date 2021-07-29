@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
+import 'package:value_notifier/shared/adapters/di_adapter.dart';
 
 import '../../countdown_view_controller.dart';
 
@@ -11,7 +11,7 @@ class CountdownWidget extends StatefulWidget {
 class _CountdownWidgetState extends State<CountdownWidget> with TickerProviderStateMixin {
   late AnimationController blinkingController;
   late Animation blinking;
-  final countdownController = GetIt.instance.get<CountdownViewController>();
+  final countdownController = DiAdapter().get<CountdownViewController>();
 
   @override
   void initState() {
