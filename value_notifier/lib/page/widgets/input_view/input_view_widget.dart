@@ -11,7 +11,7 @@ class TimerInputView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-        key: ValueKey("AnimatedBuilder"),
+        key: ValueKey("InputViewListener"),
         animation: _controller.showPageContent,
         builder: (_, __) {
           return AnimatedOpacity(

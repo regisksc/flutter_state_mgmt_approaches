@@ -22,7 +22,7 @@ void main() {
     await loadPage(tester, page: TimerInputView(controller: controller));
 
     // act
-    final animatedBuilderFinder = find.byKey(ValueKey("AnimatedBuilder"));
+    final animatedBuilderFinder = find.byKey(ValueKey("InputViewListener"));
     final descriptionLabelFinder = find.byType(DescriptionLabel);
     final fieldFinder = find.byType(Field);
     final startTimerButtonFinder = find.byType(StartTimerButton);
