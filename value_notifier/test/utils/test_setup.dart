@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:get_it/get_it.dart';
 import 'package:value_notifier/page/timer_controller.dart';
 import 'package:value_notifier/page/widgets/countdown_view/countdown_view_controller.dart';
 import 'package:value_notifier/page/widgets/input_view/input_view_controller.dart';

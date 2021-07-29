@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:value_notifier/shared/adapters/di_adapter.dart';
 
 import '../../../shared/constants/constants.dart';
 import 'input_view_controller.dart';
 import 'widgets/field_widget.dart';
 
 class TimerInputView extends StatelessWidget {
-  TimerInputView({Key? key}) : super(key: key);
-
-  final _controller = DiAdapter().get<TimerInputViewController>();
+  TimerInputView({Key? key, required TimerInputViewController controller}) : _controller = controller;
+  final TimerInputViewController _controller;
 
   @override
   Widget build(BuildContext context) {

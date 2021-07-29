@@ -6,6 +6,7 @@ import 'package:value_notifier/shared/adapters/di_adapter.dart';
 import 'notifiers/timer_step_notifier.dart';
 import 'timer_controller.dart';
 import 'widgets/countdown_view/countdown_view_widget.dart';
+import 'widgets/input_view/input_view_controller.dart';
 
 class TimerPage extends StatelessWidget {
   TimerPage({Key? key}) : super(key: key);
@@ -28,7 +29,8 @@ class TimerPage extends StatelessWidget {
             child: ValueListenableBuilder<TimerStep>(
               valueListenable: controller.timerStep,
               builder: (_, step, __) {
-                if (step is InputTimeStep) return TimerInputView();
+                final controller = DiAdapter().get<TimerInputViewController>();
+                if (step is InputTimeStep) return TimerInputView(controller: controller);
                 return TimerCountdownView();
               },
             ),
