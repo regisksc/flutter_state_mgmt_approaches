@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
-import 'package:value_notifier/constants/constants.dart';
+import 'package:value_notifier/shared/constants/constants.dart';
 import 'package:value_notifier/page/notifiers/timer_step_notifier.dart';
 import 'package:value_notifier/page/widgets/input_view/input_view_controller.dart';
 
