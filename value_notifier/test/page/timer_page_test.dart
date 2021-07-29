@@ -20,14 +20,14 @@ void main() {
   });
 
   testWidgets('should render all widgets', (tester) async {
-    // Arrange
+    // arrange
     await loadPage(tester, page: TimerPage());
 
-    // Act
+    // act
     final findScaffold = find.byType(Scaffold);
     final scaffold = tester.widget(findScaffold) as Scaffold;
 
-    // Assert
+    // assert
     expect(findScaffold, findsOneWidget);
     expect(scaffold.appBar, isNotNull);
     expect(find.byType(TimerInputView), findsOneWidget);
@@ -35,17 +35,17 @@ void main() {
 
   testWidgets('should render TimerCountdownView when state requires', (tester) async {
     await tester.runAsync(() async {
-      // Arrange
+      // arrange
       await loadPage(tester, page: TimerPage());
       await tester.pump();
       final controller = DiAdapter().get<TimerController>();
       final timerStepInitialState = controller.timerStep.value;
 
-      // Act
+      // act
       controller.timerStep.value = CountdownViewStep();
       await tester.pumpAndSettle();
 
-      // Assert
+      // assert
       expect(timerStepInitialState, isA<InputTimeStep>());
       expect(controller.timerStep.value, isA<CountdownViewStep>());
       expect(find.byType(TimerCountdownView), findsOneWidget);
