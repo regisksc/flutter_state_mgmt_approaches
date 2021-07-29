@@ -31,6 +31,12 @@ class _CountdownWidgetState extends State<CountdownWidget> with TickerProviderSt
   }
 
   @override
+  void dispose() {
+    blinkingController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
