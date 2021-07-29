@@ -29,9 +29,14 @@ class BackButtonWidget extends StatelessWidget {
         child: Container(
           height: 40,
           width: 100,
+          padding: EdgeInsets.symmetric(horizontal: 8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [Icon(Icons.arrow_back), Text("change")],
+            children: [
+              Expanded(child: FittedBox(child: Icon(Icons.arrow_back))),
+              Spacer(),
+              Text("change"),
+            ],
           ),
         ),
       ),
