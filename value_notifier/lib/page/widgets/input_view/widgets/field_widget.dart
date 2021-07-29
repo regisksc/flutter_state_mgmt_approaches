@@ -19,20 +19,23 @@ class Field extends StatelessWidget {
     final formatters = <TextInputFormatter>[];
     if (onlyNumbers) formatters.add(FilteringTextInputFormatter.digitsOnly);
     if (maxLength != null) formatters.add(LengthLimitingTextInputFormatter(maxLength));
-    return TextField(
-      keyboardType: keyboardType ?? TextInputType.number,
-      style: TextStyle(
-        color: Theme.of(context).primaryColor,
-        fontWeight: FontWeight.bold,
-        letterSpacing: 1,
-      ),
-      textAlign: TextAlign.center,
-      inputFormatters: formatters,
-      onChanged: onChanged,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Theme.of(context).accentColor),
+    return Material(
+      color: Colors.transparent,
+      child: TextField(
+        keyboardType: keyboardType ?? TextInputType.number,
+        style: TextStyle(
+          color: Theme.of(context).primaryColor,
+          fontWeight: FontWeight.bold,
+          letterSpacing: 1,
+        ),
+        textAlign: TextAlign.center,
+        inputFormatters: formatters,
+        onChanged: onChanged,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Theme.of(context).accentColor),
+          ),
         ),
       ),
     );

@@ -2,45 +2,44 @@ import 'package:flutter/material.dart';
 import 'package:value_notifier/shared/adapters/di_adapter.dart';
 
 import '../../../shared/constants/constants.dart';
-import '../countdown_view/countdown_view_controller.dart';
 import 'input_view_controller.dart';
 import 'widgets/field_widget.dart';
 
 class TimerInputView extends StatelessWidget {
   TimerInputView({Key? key}) : super(key: key);
 
-  final controller = DiAdapter().get<TimerInputViewController>();
-  final countdownController = DiAdapter().get<CountdownViewController>();
+  final _controller = DiAdapter().get<TimerInputViewController>();
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-        animation: controller.showPageContent,
+        key: ValueKey("AnimatedBuilder"),
+        animation: _controller.showPageContent,
         builder: (_, __) {
           return AnimatedOpacity(
-            opacity: controller.showPageContent.value ? 1 : 0,
+            opacity: _controller.showPageContent.value ? 1 : 0,
             duration: Constants.fadeTransitionDuration,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 DescriptionLabel(),
-                Field(onChanged: onTypeTimer, maxLength: 4),
+                Field(onChanged: _onTypeTimer, maxLength: 4),
                 SizedBox(height: 100),
-                StartTimerButton(controller)
+                StartTimerButton(_controller)
               ],
             ),
           );
         });
   }
 
-  onTypeTimer(text) => controller.setTimer(
+  _onTypeTimer(text) => _controller.setTimer(
         int.tryParse(text) ?? Constants.defaultTimerAmountOfSeconds,
       );
 }
 
 class StartTimerButton extends StatelessWidget {
-  const StartTimerButton(this.controller);
-  final TimerInputViewController controller;
+  const StartTimerButton(this._controller);
+  final TimerInputViewController _controller;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +49,7 @@ class StartTimerButton extends StatelessWidget {
         width: 140,
         height: 50,
         child: ElevatedButton.icon(
-          onPressed: controller.onSend,
+          onPressed: _controller.onSend,
           icon: Icon(Icons.play_arrow_rounded),
           label: Text('Start', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
         ),
