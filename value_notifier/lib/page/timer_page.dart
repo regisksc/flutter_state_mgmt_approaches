@@ -3,7 +3,6 @@ import 'package:value_notifier/page/widgets/countdown_view/countdown_view_contro
 import 'package:value_notifier/page/widgets/input_view/input_view_widget.dart';
 import 'package:value_notifier/shared/adapters/di_adapter.dart';
 
-import 'notifiers/timer_step_notifier.dart';
 import 'timer_controller.dart';
 import 'widgets/countdown_view/countdown_view_widget.dart';
 import 'widgets/input_view/input_view_controller.dart';
