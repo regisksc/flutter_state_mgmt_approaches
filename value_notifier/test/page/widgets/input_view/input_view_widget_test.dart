@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:value_notifier/page/widgets/input_view/input_view_controller.dart';
 import 'package:value_notifier/page/widgets/input_view/input_view_widget.dart';
+import 'package:value_notifier/page/widgets/input_view/widgets/description_label_widget.dart';
 import 'package:value_notifier/page/widgets/input_view/widgets/field_widget.dart';
 import 'package:value_notifier/shared/adapters/di_adapter.dart';
 

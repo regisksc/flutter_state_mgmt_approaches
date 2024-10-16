@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../shared/constants/constants.dart';
 import 'input_view_controller.dart';
+import 'widgets/description_label_widget.dart';
 import 'widgets/field_widget.dart';
 
 class TimerInputView extends StatelessWidget {
@@ -33,27 +34,6 @@ class TimerInputView extends StatelessWidget {
   _onTypeTimer(text) => _controller.setTimer(
         int.tryParse(text) ?? Constants.defaultTimerAmountOfSeconds,
       );
-}
-
-class StartTimerButton extends StatelessWidget {
-  const StartTimerButton(this._controller);
-  final TimerInputViewController _controller;
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: SizedBox(
-        width: 140,
-        height: 50,
-        child: ElevatedButton.icon(
-          onPressed: _controller.onSend,
-          icon: Icon(Icons.play_arrow_rounded),
-          label: Text('Start', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-        ),
-      ),
-    );
-  }
 }
 
 class DescriptionLabel extends StatelessWidget {
