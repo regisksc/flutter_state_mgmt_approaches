@@ -12,28 +12,28 @@ class TimerInputViewController {
 
   final showPageContent = ValueNotifier(true);
   int _timer = 5;
-  void setTimer(int seconds) => _timer = seconds;
+  setTimer(int seconds) => _timer = seconds;
 
-  void onSend() {
+  onSend() {
     showPageContent.value = false;
     _setTimer();
     _enableTimerVisibility();
     _changePageState();
   }
 
-  void _changePageState() {
+  _changePageState() {
     Future.delayed(Constants.fadeTransitionDuration, () {
       timerController.timerStep.value = CountdownViewStep();
     });
   }
 
-  void _enableTimerVisibility() {
+  _enableTimerVisibility() {
     if (!countdownController.showPageContent.value) {
       countdownController.showPageContent.value = true;
     }
   }
 
-  void _setTimer() {
+  _setTimer() {
     countdownController.setTimer(_timer);
     countdownController.timeToDisplay.value = _timer;
   }

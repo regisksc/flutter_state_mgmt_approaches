@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:value_notifier/page/widgets/countdown_view/countdown_view_controller.dart';
 import 'package:value_notifier/page/widgets/input_view/input_view_widget.dart';
 import 'package:value_notifier/shared/adapters/di_adapter.dart';
 
@@ -10,8 +9,7 @@ import 'widgets/input_view/input_view_controller.dart';
 class TimerPage extends StatelessWidget {
   TimerPage({Key? key}) : super(key: key);
 
-  final controller = DiAdapter().get<TimerController>();
-  final controller2 = DiAdapter().get<CountdownViewController>();
+  final _timerController = DiAdapter().get<TimerController>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +24,10 @@ class TimerPage extends StatelessWidget {
           body: Padding(
             padding: EdgeInsets.all(MediaQuery.of(context).size.shortestSide * 0.1),
             child: ValueListenableBuilder<TimerStep>(
-              valueListenable: controller.timerStep,
+              valueListenable: _timerController.timerStep,
               builder: (_, step, __) {
-                final controller = DiAdapter().get<TimerInputViewController>();
-                if (step is InputTimeStep) return TimerInputView(controller: controller);
+                final _timerController = DiAdapter().get<TimerInputViewController>();
+                if (step is InputTimeStep) return TimerInputView(controller: _timerController);
                 return TimerCountdownView();
               },
             ),
