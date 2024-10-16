@@ -9,7 +9,7 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: Theme.of(context).accentColor,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         shape: CircleBorder(),
         padding: EdgeInsets.zero,
         shadowColor: Theme.of(context).primaryColor,

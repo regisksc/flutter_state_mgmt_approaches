@@ -20,7 +20,7 @@ class BackButtonWidget extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () => controller.changeTimer(),
         style: ElevatedButton.styleFrom(
-          primary: Theme.of(context).accentColor,
+          backgroundColor: Theme.of(context).colorScheme.secondary,
           padding: EdgeInsets.zero,
           shadowColor: Theme.of(context).primaryColor,
           animationDuration: Duration.zero,

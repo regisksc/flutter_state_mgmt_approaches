@@ -11,11 +11,7 @@ class DiAdapter {
 
   void register<T extends Object>(T Function() instance, {bool singleton = true, bool lazy = true}) {
     if (singleton) {
-      if (lazy) {
-        return _di.registerLazySingleton<T>(instance);
-      } else {
-        return _di.registerSingleton<T>(instance());
-      }
+      return lazy ? _di.registerLazySingleton<T>(instance) : _di.registerSingleton<T>(instance());
     }
     return _di.registerFactory(instance);
   }

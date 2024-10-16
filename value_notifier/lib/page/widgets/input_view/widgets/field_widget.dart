@@ -34,7 +34,7 @@ class Field extends StatelessWidget {
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).accentColor),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.secondary),
           ),
         ),
       ),

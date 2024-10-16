@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.pink,
-        accentColor: AppColors.primaryColor,
+        hintColor: AppColors.primaryColor,
         primaryColor: AppColors.secondaryColor,
       ),
       home: TimerPage(),
