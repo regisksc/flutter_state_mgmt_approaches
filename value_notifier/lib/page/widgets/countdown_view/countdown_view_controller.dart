@@ -17,6 +17,7 @@ class CountdownViewController {
   bool get canPlayOrPause => timeToDisplay.value != 0;
 
   void start() {
+    _showPlayButton = false;
     timerState.value = TimerState.running;
     _timer = Timer.periodic(
       Duration(seconds: 1),
@@ -29,7 +30,10 @@ class CountdownViewController {
     stopTimer();
   }
 
-  void stopTimer() => timerState.value != TimerState.initial ? _timer.cancel() : null;
+  void stopTimer() {
+    _showPlayButton = true;
+    _timer.cancel();
+  }
 
   void restart() {
     stopTimer();
@@ -37,5 +41,6 @@ class CountdownViewController {
     timeToDisplay.value = _timerAmountInSeconds;
   }
 
-  bool get showPlayButton => timerState.value != TimerState.running;
+  bool _showPlayButton = true;
+  bool get showPlayButton => _showPlayButton;
 }

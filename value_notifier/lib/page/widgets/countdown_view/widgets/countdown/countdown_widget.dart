@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:value_notifier/shared/adapters/di_adapter.dart';
 
@@ -18,20 +20,27 @@ class _CountdownWidgetState extends State<CountdownWidget> with TickerProviderSt
     blinkingController = AnimationController(vsync: this, duration: Duration(milliseconds: 250));
     blinking = Tween<double>(begin: 0, end: 1).animate(blinkingController);
     blinkingController.forward();
-    blinkingController.addListener(() async {
-      if (blinking.value == 1) {
-        await Future.delayed(Duration(milliseconds: 400));
-        blinkingController.reverse();
-      } else if (blinking.value == 0) {
-        await Future.delayed(Duration(milliseconds: 400));
-        blinkingController.forward();
-      }
-    });
+    blinkingController.addStatusListener(_rangeAnimation);
     super.initState();
+  }
+
+  Timer? _timer;
+  void _rangeAnimation(status) {
+    debugPrint(_timer.toString());
+    if (status == AnimationStatus.completed) {
+      _timer = Timer(const Duration(milliseconds: 400), () {
+        if (mounted) blinkingController.reverse();
+      });
+    } else if (status == AnimationStatus.dismissed) {
+      _timer = Timer(const Duration(milliseconds: 400), () {
+        if (mounted) blinkingController.forward();
+      });
+    }
   }
 
   @override
   void dispose() {
+    blinkingController.removeStatusListener(_rangeAnimation);
     blinkingController.dispose();
     super.dispose();
   }
